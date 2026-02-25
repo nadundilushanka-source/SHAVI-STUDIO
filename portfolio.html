@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shavi Studio - Creative Digital Marketing Agency</title>
+    <link rel="icon" type="image/png" href="images/shavi_logo.png">
+    <meta name="description"
+        content="Check out our portfolio of stunning social media campaigns, branding designs, and digital content projects.">
+    <meta name="keywords" content="Portfolio, Digital Gallery, Showreel, Branding Work, Shavi Studio Projects">
+    <script>
+        if (localStorage.theme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.backgroundColor = '#ffffff';
+        } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.backgroundColor = '#050505';
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#33ccff', // Cyan Accent
+                        secondary: '#111111', // Dark Black
+                        accent: '#0EA5E9', // Cyan 500
+                        dark: '#050505', // Deep Black
+                        card: '#0A0A0A',
+                        light: '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Performance Optimization: Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #33ccff;
+        }
+    </style>
+</head>
+
+<body class="bg-light text-slate-800 dark:bg-dark dark:text-slate-100 flex flex-col min-h-screen relative">
+    <div id="hero-canvas" class="fixed inset-0 z-0 opacity-30 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-lg transition-colors duration-300 border-b border-transparent dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group" onclick="window.location.href='index.html'">
+                    <img src="images/shavi_logo.png" alt="SHAVI STUDIO" class="h-10 w-auto">
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-4 xl:space-x-8">
+                        <a href="index.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">Home</a>
+                        <a href="services.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">Services</a>
+                        <a href="portfolio.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-primary bg-cyan-50 dark:bg-slate-900 dark:text-cyan-400">Portfolio</a>
+                        <a href="pricing.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">Pricing</a>
+                        <a href="about.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">About</a>
+                        <a href="how-it-works.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">How
+                            It Works</a>
+                        <a href="testimonials.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">Client
+                            Reviews</a>
+                        <a href="contact.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-cyan-400 transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex lg:hidden">
+                        <button id="mobile-menu-btn" type="button"
+                            class="inline-flex items-center justify-center p-3 rounded-md text-slate-800 dark:text-slate-200 hover:text-primary hover:bg-slate-700">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:hidden hidden bg-white dark:bg-black border-t dark:border-slate-800" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">Home</a>
+                    <a href="services.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">Services</a>
+                    <a href="portfolio.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-cyan-50 dark:bg-slate-900 dark:text-cyan-400">Portfolio</a>
+                    <a href="pricing.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">Pricing</a>
+                    <a href="about.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">About</a>
+                    <a href="how-it-works.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">How
+                        It Works</a>
+                    <a href="testimonials.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">Client
+                        Reviews</a>
+                    <a href="contact.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary dark:hover:text-cyan-400">Contact</a>
+                </div>
+            </div>
+    </nav>
+
+    <a href="https://wa.me/94775574661" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse-slow">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Portfolio Section -->
+    <section class="pt-32 pb-20 px-6 flex-grow">
+        <div class="container mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Our <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Portfolio</span>
+                </h1>
+                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">Explore some of our recent projects and
+                    creative works across social media, branding, and design.</p>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Items managed by public-logic.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300"
+        onclick="closeLightbox()">
+        <button
+            class="absolute top-6 right-6 text-white text-4xl hover:text-red-500 transition-colors focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="Preview"
+            class="max-w-full max-h-[90vh] rounded-lg shadow-2xl transform scale-95 transition-transform duration-300"
+            onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-card border-t border-slate-200 dark:border-white/5 py-12 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="mb-6 cursor-pointer" onclick="window.location.href='index.html'">
+                        <img src="images/shavi_logo.png" alt="SHAVI STUDIO" class="h-8 w-auto">
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">
+                        Bringing stories to life through the power of digital mastery.
+                    </p>
+                    <div class="flex gap-4">
+                        <a id="facebook-link" href="#"
+                            class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a id="instagram-link" href="#"
+                            class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-instagram"></i></a>
+                        <a id="tiktok-link" href="#"
+                            class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-tiktok"></i></a>
+                        <a id="youtube-link" href="#"
+                            class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:items-center">
+                    <h3 class="font-bold text-lg mb-6 text-slate-800 dark:text-white">Quick Links</h3>
+                    <ul class="space-y-3 md:text-center">
+                        <li><a href="index.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">Home</a>
+                        </li>
+                        <li><a href="services.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">Services</a>
+                        </li>
+                        <li><a href="portfolio.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">Portfolio</a>
+                        </li>
+                        <li><a href="about.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">About</a>
+                        </li>
+                        <li><a href="how-it-works.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">How
+                                It Works</a></li>
+                        <li><a href="testimonials.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">Client
+                                Reviews</a></li>
+                        <li><a href="contact.html"
+                                class="text-slate-500 dark:text-slate-400 hover:text-primary transition-all duration-300 block">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-6 text-slate-800 dark:text-white">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-500 dark:text-slate-400">
+                            <i class="fas fa-map-marker-alt mt-1 text-primary"></i>
+                            <span id="footer-address">Colombo, Sri Lanka</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span id="footer-phone">+94 77 557 4661</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span id="footer-email">shavistudiolk@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-200 dark:border-white/5 mt-12 pt-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+                &copy; 2026 SHAVI STUDIO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase SDKs -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/db-adapter.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/public-logic.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+    </script>
+</body>
+
+</html>
